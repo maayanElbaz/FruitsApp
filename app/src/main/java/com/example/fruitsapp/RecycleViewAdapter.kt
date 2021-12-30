@@ -7,19 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fruitsapp.R.drawable
 import com.example.fruitsapp.RecycleViewAdapter.MyViewHolder
-import com.example.fruitsapp.databinding.FragmentHomeBinding
 import com.example.fruitsapp.databinding.FruitItemBinding
+import com.google.android.material.shape.CornerFamily
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.net.HttpURLConnection
-import com.example.fruitsapp.R.drawable
 import java.net.URL
-import com.google.android.material.shape.CornerFamily
-
-import android.R
-import android.content.res.Resources
 
 
 class RecycleViewAdapter : RecyclerView.Adapter<MyViewHolder>(){
@@ -121,7 +117,5 @@ class RecycleViewAdapter : RecyclerView.Adapter<MyViewHolder>(){
                 image.setImageResource(drawable.baseline_hide_image_blue_grey_400_24dp)
             }
         }
-
     }
-
 }

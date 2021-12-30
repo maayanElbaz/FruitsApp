@@ -77,8 +77,6 @@ class MainActivityViewModel : ViewModel() {
             mMemoryCache?.put(key, bitmap)
         }
     }
-
-
 }
 
 

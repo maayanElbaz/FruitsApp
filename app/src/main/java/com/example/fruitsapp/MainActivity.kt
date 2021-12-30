@@ -1,10 +1,11 @@
 package com.example.fruitsapp
 
 import android.graphics.Bitmap
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.fruitsapp.databinding.ActivityMainBinding
 
@@ -19,7 +20,6 @@ class MainActivity : AppCompatActivity(), RecycleViewAdapter.onItemClickListener
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         // calling the action bar
-
         // showing the back button in action bar
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
         viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
@@ -30,6 +30,14 @@ class MainActivity : AppCompatActivity(), RecycleViewAdapter.onItemClickListener
             replace(R.id.mainLayout, fragment)
             addToBackStack(null)
         }
+
+        viewModel?.getErrorLiveData()?.observe(this, Observer {
+            if (it != null && it.isNotEmpty()) {
+                Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -58,6 +66,5 @@ class MainActivity : AppCompatActivity(), RecycleViewAdapter.onItemClickListener
     override fun onBackPressed() {
         super.onBackPressed()
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
-
     }
 }

@@ -2,22 +2,17 @@ package com.example.fruitsapp
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.fruitsapp.databinding.FragmentDetailsBinding
-import java.text.NumberFormat
-import java.util.*
 
 
 class DetailsFragment : Fragment() {
     private lateinit var binding: FragmentDetailsBinding
     private var memoryListener: RecycleViewAdapter.imageFromCacheListener? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentDetailsBinding.inflate(inflater, container, false)
@@ -36,7 +31,6 @@ class DetailsFragment : Fragment() {
     }
 
     private fun setImage( name: String?) {
-
         binding.image.setImageBitmap(null)
 
         if (name != null) {
